@@ -29,6 +29,13 @@ app.use(bodyParser.urlencoded({
 // Passport Initialization
 require('./config/passport')(passport)
 
+// CORS SET UP
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // User Routes
 app.use('/api/users', users)
 app.use('/api/profile', profile)
